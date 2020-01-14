@@ -1,5 +1,5 @@
 import paho.mqtt.client as mqtt
-import time
+import time, datetime
 from random import uniform
 
 # from sense_hat import SenseHat
@@ -23,6 +23,7 @@ try:
 		#client.publish("sense/humid", sense.get_humidity())
 		client.publish("sense/humid", uniform(3.0, 99.9))
 		#pause for 10 seconds
+		client.publish("second", datetime.datetime.now().second )
 		time.sleep(2)
 	#deal nicely with ^C
 except KeyboardInterrupt:
