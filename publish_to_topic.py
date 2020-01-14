@@ -21,8 +21,9 @@ try:
 		client.publish("sense/temp", uniform(3.0, 27.0))
 		#publish humidity
 		#client.publish("sense/humid", sense.get_humidity())
+		client.publish("sense/humid", uniform(3.0, 99.9))
 		#pause for 10 seconds
-		time.sleep(1)
+		time.sleep(2)
 	#deal nicely with ^C
 except KeyboardInterrupt:
 	print("interrupted!")
