@@ -38,14 +38,14 @@ def publish_mqtt():
 			Get sensor data
 		"""
 		# pressure = sense.get_pressure()
-		pressure = uniform(940.0, 990.9)
+		pressure = uniform(910.0, 990.9)
 		pressure = round(pressure, 2)
 
-		temp = uniform(3.0, 27.0)
+		temp = uniform(9.0, 17.0)
 		# temp = sense.get_temperature()
 		temp = round(temp, 1)
 		# humid = sense.get_humidity()
-		humid = uniform(80.0, 99)
+		humid = uniform(60.0, 99)
 		humid = round(humid, 3)
 		"""
 			Publish to MQTT
