@@ -1,14 +1,15 @@
 import paho.mqtt.client as mqtt
 import time, datetime
-from random import uniform
+from random import uniform, choice
+
 
 # from sense_hat import SenseHat
 # sense = SenseHat()
 # set up mqtt client
 client = mqtt.Client("python_pub")
-#set mqtt username/pw
+# set mqtt username/pw
 client.username_pw_set(username="gkpdrpfa", password="bvwnbQm7g5Wv")
-#set server to publish to
+# set server to publish to
 client.connect("hairdresser.cloudmqtt.com", 18875)
 client.loop_start()
 # What is this?
@@ -29,10 +30,17 @@ try:
 		pressure = 930.4
 
 		client.publish("sense/pressure", pressure)
+		green = "#4feb34"
+		red = "#eb4034"
+		orange = "#eb9334"
+		color = choice([green, red, orange])
+		client.publish("sense/color", color )
 		#pause for 10 seconds
 		client.publish("second", datetime.datetime.now().second )
-		time.sleep(2)
-	#deal nicely with ^C
+		time.sleep(.5)
+
+	# deal nicely with ^C
 except KeyboardInterrupt:
 	print("interrupted!")
 client.loop_stop()
+

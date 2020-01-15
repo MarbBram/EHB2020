@@ -20,7 +20,7 @@ def send_basic():
 	client = InfluxDBClient(url="https://eu-central-1-1.aws.cloud2.influxdata.com", token=my_token)
 	try:
 		kind = 'temperature'
-		owner = 'host1'
+		owner = 'bdr'
 		device = 'opt-123'
 		"""
 		Get sensor data
@@ -34,7 +34,7 @@ def send_basic():
 		"""
 		Write data by Point structure
 		"""
-		point = Point(kind).tag('owner', owner).tag('device', device).field('value', uniform(23.0, 27.0)).time(time=datetime.utcnow())
+		point = Point(kind).tag('owner', owner).tag('device', device).field('value', round(uniform(23.0, 27.0), 2)).time(time=datetime.utcnow())
 		print(f'Writing to InfluxDB cloud: {point.to_line_protocol()} ...')
 
 		write_api = client.write_api(write_options=SYNCHRONOUS)
@@ -58,7 +58,7 @@ def send_basic():
 
 			for table in tables:
 				for row in table.records:
-					print(f'{row.values["_time"]}: host={row.values["host"]},device={row.values["device"]} '
+					print(f'{row.values["_time"]}: owner={row.values["owner"]},device={row.values["device"]} '
 						  f'{row.values["_value"]} °C')
 
 			print()
