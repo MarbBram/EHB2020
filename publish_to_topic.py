@@ -63,7 +63,8 @@ def publish_mqtt():
 		color = choice([green, red, orange])
 		client.publish("sense/color", color)
 		# pause for 10 seconds
-		client.publish("second", datetime.datetime.now().second)
+		client.publish("second", datetime.datetime.now().minute + datetime.datetime.now().second / 100)
+		client.publish("sense/time", datetime.datetime.now().second)
 
 	except Exception as e:
 		print(e)
@@ -73,8 +74,8 @@ def publish_mqtt():
 try:
 	while True:
 		publish_mqtt()
-		time.sleep(2.4)
-		if random() < 0.01:
+		time.sleep(5.4)
+		if random() < 0.1:
 			x = outside_temp()
 			client.publish("sense/outsidetemp", round(x, 1))
 
