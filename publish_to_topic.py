@@ -20,8 +20,15 @@ try:
 		#client.publish("sense/temp", sense.get_temperature())
 		client.publish("sense/temp", uniform(3.0, 27.0))
 		#publish humidity
-		#client.publish("sense/humid", sense.get_humidity())
+		#client.publish("sense/humid", humid)
 		client.publish("sense/humid", uniform(3.0, 99.9))
+
+		# pressure = sense.get_pressure()
+		# temp = sense.get_temperature()
+		# humid = sense.get_humidity()
+		pressure = 930.4
+
+		client.publish("sense/pressure", pressure)
 		#pause for 10 seconds
 		client.publish("second", datetime.datetime.now().second )
 		time.sleep(2)
