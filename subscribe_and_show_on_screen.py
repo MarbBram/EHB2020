@@ -24,10 +24,13 @@ def on_message(client, userdata, msg):
 
 ### MAIN ###
 client = mqtt.Client()
-client.username_pw_set(username="gkpdrpfa", password="bvwnbQm7g5Wv")
+MQTT_ADDRESS = "hairdresser.cloudmqtt.com"
+MQTT_USER = 'gkpdrpfa'
+MQTT_PASSWORD = 'bvwnbQm7g5Wv'
+client.username_pw_set(username=MQTT_USER, password=MQTT_PASSWORD)
 client.on_connect = on_connect
 client.on_message = on_message
-client.connect("hairdresser.cloudmqtt.com", 18875)
+client.connect(MQTT_ADDRESS, 18875)
 
 # Blocking call that processes network traffic, dispatches callbacks and
 # handles reconnecting.
