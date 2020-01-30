@@ -28,6 +28,7 @@ MQTT_USER = 'gkpdrpfa'
 MQTT_PASSWORD = 'bvwnbQm7g5Wv'
 MQTT_TOPIC = 'sense/+'  # [bme280|sense]/[temp|humid|pressure]
 MQTT_REGEX = 'sense/([^/]+)'
+MQTT_PORT = 'yourport'
 
 INFLUXDB_ADDRESS = "https://eu-central-1-1.aws.cloud2.influxdata.com/"
 influxdb_client = InfluxDBClient(url=INFLUXDB_ADDRESS, token=INFLUXDB_TOKEN)
@@ -101,7 +102,7 @@ def main():
 	mqtt_client.username_pw_set(MQTT_USER, MQTT_PASSWORD)
 	mqtt_client.on_connect = on_connect
 	mqtt_client.on_message = on_message
-	mqtt_client.connect(MQTT_ADDRESS, 18875)
+	mqtt_client.connect(MQTT_ADDRESS, MQTT_PORT)
 	mqtt_client.loop_forever()
 
 

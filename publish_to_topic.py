@@ -31,6 +31,7 @@ def outside_temp():
 	outside_tem = weather_data["main"]["temp"]
 	return outside_tem
 
+
 def publish_mqtt():
 	try:
 
@@ -75,7 +76,7 @@ try:
 	while True:
 		publish_mqtt()
 		time.sleep(5.4)
-		if random() < 0.1:
+		if random() < 0.01:
 			x = outside_temp()
 			client.publish("sense/outsidetemp", round(x, 1))
 

@@ -1,4 +1,4 @@
-print(traffic)
+
 fname = "traffic_full.csv"
 traffic.to_csv(fname)
 with open(fname, 'r') as fin:
